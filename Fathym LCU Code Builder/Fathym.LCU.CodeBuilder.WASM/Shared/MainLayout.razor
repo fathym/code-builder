@@ -1,0 +1,24 @@
+﻿@inherits LayoutComponentBase
+
+<div>
+    <Layout Sider>
+        <LayoutSider>
+            <LayoutSiderContent>
+                <IDEActivityBar></IDEActivityBar>
+            </LayoutSiderContent>
+        </LayoutSider>
+
+        <Layout>
+            <LayoutHeader Fixed>
+                <IDEHeader Title="MyStudio">
+                </IDEHeader>
+            </LayoutHeader>
+
+            <LayoutContent>
+                <Div Padding="Padding.Is2">
+                    @Body
+                </Div>
+            </LayoutContent>
+        </Layout>
+    </Layout>
+</div>

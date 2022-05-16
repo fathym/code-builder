@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fathym.LCU.CodeBuilder.WASM", "Fathym.LCU.CodeBuilder.WASM\Fathym.LCU.CodeBuilder.WASM.csproj", "{701D4F64-7C7A-4FB1-99A6-6E81802B1C9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{EA00C147-F228-4E87-9BD4-AE62452B9261}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Develop", "Develop", "{A4C75AB3-0C36-469E-99DC-96A15C645AF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{CCD55196-3CEF-46E5-800B-F10C4611CF13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{789065C5-FB5C-4AFB-8F5D-122D7D1C297F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fathym.LCU.CodeBuilder", "Fathym.LCU.CodeBuilder\Fathym.LCU.CodeBuilder.csproj", "{C586DF04-0F2E-4DBA-A9EA-DE32686A0B18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{701D4F64-7C7A-4FB1-99A6-6E81802B1C9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{701D4F64-7C7A-4FB1-99A6-6E81802B1C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{701D4F64-7C7A-4FB1-99A6-6E81802B1C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{701D4F64-7C7A-4FB1-99A6-6E81802B1C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C586DF04-0F2E-4DBA-A9EA-DE32686A0B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C586DF04-0F2E-4DBA-A9EA-DE32686A0B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C586DF04-0F2E-4DBA-A9EA-DE32686A0B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C586DF04-0F2E-4DBA-A9EA-DE32686A0B18}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{701D4F64-7C7A-4FB1-99A6-6E81802B1C9A} = {EA00C147-F228-4E87-9BD4-AE62452B9261}
+		{C586DF04-0F2E-4DBA-A9EA-DE32686A0B18} = {A4C75AB3-0C36-469E-99DC-96A15C645AF5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F64C885B-A6C7-49BF-ADB3-7615E4E0C5E7}
+	EndGlobalSection
+EndGlobal

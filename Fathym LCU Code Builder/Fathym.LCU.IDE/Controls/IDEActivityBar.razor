@@ -1,0 +1,59 @@
+﻿@inherits IDEActivityBarBase
+
+<Bar Mode="BarMode.VerticalInline"
+     CollapseMode="BarCollapseMode.Small"
+     Breakpoint="Breakpoint.Desktop"
+     ThemeContrast="ThemeContrast.Dark">
+    <BarBrand>
+        <BarItem Padding="Padding.Is2">
+            <BarLink To="/">
+                <Image Class="logo short" Source="https://www.fathym.com/assets/images/logo.png" Text="Fathym" />
+
+                <MediaQuery Media="@LCUBreakpoints.Up(992)">
+                    <Matched>
+                        <Text Padding="Padding.Is2.FromStart" TextColor="TextColor.Primary">@Title</Text>
+                    </Matched>
+                </MediaQuery>
+            </BarLink>
+        </BarItem>
+    </BarBrand>
+
+    <BarMenu>
+        <BarStart>
+            <BarItem>
+                <BarLink To="/studio/package-1/plugin-1">
+                    <BarIcon IconName="@("fa-phone")" />
+
+                    Plugin1
+                </BarLink>
+            </BarItem>
+
+            <BarItem>
+                <BarLink To="/studio/text-grid/apis">
+                    <BarIcon IconName="@("fa-mobile-screen-button")" />
+
+                    TextGrid
+                </BarLink>
+            </BarItem>
+        </BarStart>
+
+        <BarEnd>
+            <BarItem>
+                <BarLink To="/mystudio">
+                    <BarIcon IconName="@("fa-paintbrush")" />
+
+                    MyStudio
+                </BarLink>
+            </BarItem>
+
+            <BarItem>
+                <BarLink To="/settings">
+                    <BarIcon IconName="@("fa-gears")" />
+
+                    Settings
+                </BarLink>
+            </BarItem>
+        </BarEnd>
+    </BarMenu>
+</Bar>
+

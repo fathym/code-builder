@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Fathym Studio</title>
+    <base href="/" />
+
+    <link rel="shortcut icon" type="image/svg" href="https://www.fathym.com/assets/images/logo.png" />
+
+    <link href="https://cdn.fathym.com/npm/djibe-material/css/material.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i|Roboto+Mono:300,400,700|Roboto+Slab:300,400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="./_content/Blazorise/blazorise.css" rel="stylesheet" />
+    <link href="./_content/Blazorise.Material/blazorise.material.css" rel="stylesheet" />
+    <link href="./_content/Blazorise.Icons.Material/blazorise.icons.material.css" rel="stylesheet" />
+
+    <link href="./css/app.css" rel="stylesheet" />
+    <link href="./Fathym.LCU.Studio.WASM.styles.css" rel="stylesheet" />
+
+    <script id="lcu-reg">
+        window.LCU = {
+            User: {
+                Email: 'a-test-email@fathym.com'
+            }
+        }
+    </script>
+
+    <script src="https://kit.fontawesome.com/4eb6c2afc3.js" async crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;display:block;" width="150px" height="150px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+            <rect x="7.5" y="7.5" width="25" height="25" fill="#4a918e">
+                <animate attributeName="fill" values="#b9dddd;#4a918e;#4a918e" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0s" calcMode="discrete"></animate>
+            </rect>
+            <rect x="37.5" y="7.5" width="25" height="25" fill="#4a918e">
+                <animate attributeName="fill" values="#b9dddd;#4a918e;#4a918e" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.125s" calcMode="discrete"></animate>
+            </rect>
+            <rect x="67.5" y="7.5" width="25" height="25" fill="#4a918e">
+                <animate attributeName="fill" values="#b9dddd;#4a918e;#4a918e" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.25s" calcMode="discrete"></animate>
+            </rect>
+            <rect x="7.5" y="37.5" width="25" height="25" fill="#4a918e">
+                <animate attributeName="fill" values="#b9dddd;#4a918e;#4a918e" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.875s" calcMode="discrete"></animate>
+            </rect>
+            <rect x="67.5" y="37.5" width="25" height="25" fill="#4a918e">
+                <animate attributeName="fill" values="#b9dddd;#4a918e;#4a918e" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.375s" calcMode="discrete"></animate>
+            </rect>
+            <rect x="7.5" y="67.5" width="25" height="25" fill="#4a918e">
+                <animate attributeName="fill" values="#b9dddd;#4a918e;#4a918e" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.75s" calcMode="discrete"></animate>
+            </rect>
+            <rect x="37.5" y="67.5" width="25" height="25" fill="#4a918e">
+                <animate attributeName="fill" values="#b9dddd;#4a918e;#4a918e" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.625s" calcMode="discrete"></animate>
+            </rect>
+            <rect x="67.5" y="67.5" width="25" height="25" fill="#4a918e">
+                <animate attributeName="fill" values="#b9dddd;#4a918e;#4a918e" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.5s" calcMode="discrete"></animate>
+            </rect>
+        </svg>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.fathym.com/npm/djibe-material/js/material.min.js"></script>
+    <script src="./_content/Blazorise.Material/blazorise.material.js"></script>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="./_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>

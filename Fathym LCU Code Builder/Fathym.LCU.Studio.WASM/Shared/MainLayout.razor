@@ -1,16 +1,19 @@
-﻿@inherits LayoutComponentBase
+﻿@inherits MainLayoutBase
 
 <div>
     <Layout Sider>
         <LayoutSider>
             <LayoutSiderContent>
-                <IDEActivityBar></IDEActivityBar>
+                <IDEActivityBar Title="Fathym Studio"></IDEActivityBar>
             </LayoutSiderContent>
         </LayoutSider>
 
         <Layout>
             <LayoutHeader Fixed>
-                <IDEHeader Title="MyStudio">
+                <IDEHeader Title="MyStudio2"
+                           PackagePath="studio/{selectedPackage}"
+                           PluginPath="{selectedPlugin}"
+                           Items="headerItems">
                 </IDEHeader>
             </LayoutHeader>
 
@@ -26,3 +29,4 @@
         </Layout>
     </Layout>
 </div>
+

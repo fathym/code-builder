@@ -3,7 +3,7 @@ using Fathym.LCU.Utils;
 using Microsoft.AspNetCore.Components;
 using System.Text.Json.Nodes;
 
-namespace Fathym.LCU.CodeBuilder.WASM
+namespace Fathym.LCU.Studio.WASM
 {
     public class AppState
     {

@@ -1,0 +1,93 @@
+﻿@inherits IDEHeaderBase
+
+<Bar Breakpoint="Breakpoint.Desktop"
+     Background="Background.Dark"
+     ThemeContrast="ThemeContrast.Dark">
+    <BarBrand>@Title</BarBrand>
+
+    <BarToggler />
+
+    <BarMenu>
+        @if (Items != null)
+        {
+            var itemLinks = buildItemLinks(Items);
+
+            <BarStart>
+                @foreach (var item in Items)
+                {
+                    if (item.Position == IDEHeaderItemPositionTypes.Start)
+                    {
+                        @CreateBarItem((item, itemLinks))
+                    }
+                }
+            </BarStart>
+
+            <BarEnd>
+                @foreach (var item in Items)
+                {
+                    if (item.Position == IDEHeaderItemPositionTypes.End)
+                    {
+                        @CreateBarItem((item, itemLinks))
+                    }
+                }
+            </BarEnd>
+        }
+    </BarMenu>
+</Bar>
+
+@code {
+    public static RenderFragment<(IDEHeaderItemState Item, IDictionary<string, string> ItemLinks)> CreateLinkOrText =
+        data => __builder =>
+        {
+            <div>
+                @if (!String.IsNullOrEmpty(data.Item.Path))
+                {
+                    var target = data.Item.Path.Contains("://") ? Target.Blank : Target.Top;
+
+                    <BarLink To="@data.ItemLinks[data.Item.Path]" Target="@target">
+                        @data.Item.Text
+                    </BarLink>
+                }
+                else
+                {
+                    @data.Item.Text
+                }
+            </div>
+        };
+
+    public static RenderFragment<(IDEHeaderItemState Item, IDictionary<string, string> ItemLinks)> CreateBarItem =
+        data => __builder =>
+        {
+            <BarItem>
+                @if (data.Item.Items != null)
+                {
+                    <BarDropdown>
+                        <BarDropdownToggle>@data.Item.Text</BarDropdownToggle>
+
+                        <BarDropdownMenu>
+                            @if (data.Item.Items != null)
+                            {
+                                foreach (var subItem in data.Item.Items)
+                                {
+                                    if (String.IsNullOrEmpty(subItem.Text) && String.IsNullOrEmpty(subItem.Path))
+                                    {
+                                        <BarDropdownDivider />
+                                    }
+                                    else
+                                    {
+                                        <BarDropdownItem>
+                                            @CreateLinkOrText((subItem, data.ItemLinks))
+                                        </BarDropdownItem>
+                                    }
+                                }
+                            }
+                        </BarDropdownMenu>
+                    </BarDropdown>
+                }
+                else
+                {
+                    @CreateLinkOrText((data.Item, data.ItemLinks))
+                }
+            </BarItem>
+        };
+}

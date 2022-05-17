@@ -9,13 +9,16 @@
         </LayoutSider>
 
         <Layout>
-            <LayoutHeader Fixed>
-                <IDEHeader Title="MyStudio2"
-                           PackagePath="studio/{selectedPackage}"
-                           PluginPath="{selectedPlugin}"
-                           Items="headerItems">
-                </IDEHeader>
-            </LayoutHeader>
+            @if (studioState.Header != null)
+            {
+                <LayoutHeader Fixed>
+                    <IDEHeader Title="@studioState.Header.Title"
+                           PackagePath="@($"studio/{studioState.CurrentPackage}")"
+                           PluginPath="@studioState.CurrentPlugin"
+                           Items="studioState.Header.Items">
+                    </IDEHeader>
+                </LayoutHeader>
+            }
 
             <LayoutContent>
                 <Div Padding="Padding.Is2">
@@ -24,7 +27,7 @@
             </LayoutContent>
 
             <LayoutFooter>
-                <IDEStatusBar Status="Configuring..."></IDEStatusBar>
+                <IDEStatusBar Status=""></IDEStatusBar>
             </LayoutFooter>
         </Layout>
     </Layout>

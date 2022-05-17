@@ -21,47 +21,72 @@ using System.Net.Http.Json;
 
 namespace Fathym.LCU.Studio.WASM.Shared
 {
+    public class LCUStudioState
+    {
+        public virtual string? CurrentPackage { get; set; }
+
+        public virtual string? CurrentPlugin { get; set; }
+
+        public virtual LCUStudioHeaderState? Header { get; set; }
+    }
+
+    public class LCUStudioHeaderState
+    {
+        public virtual List<IDEHeaderItemState>? Items { get; set; }
+
+        public virtual string Title { get; set; }
+    }
+
     public class MainLayoutBase : LayoutComponentBase
     {
         #region Fields
-        protected List<IDEHeaderItemState> headerItems;
+        protected LCUStudioState studioState;
         #endregion
 
         #region Constructors
         public MainLayoutBase()
         {
-            headerItems = new List<IDEHeaderItemState>()
+            studioState = new LCUStudioState()
             {
-                new IDEHeaderItemState()
+                CurrentPackage = "{selectedPackage}",
+                CurrentPlugin = "{selectedPlugin}",
+                Header = new LCUStudioHeaderState()
                 {
-                    Text = "Getting Started",
-                    Position = IDEHeaderItemPositionTypes.Start,
+                    Title = "MyStudio",
                     Items = new List<IDEHeaderItemState>()
                     {
                         new IDEHeaderItemState()
                         {
-                            Text = "Walkthrough of Studio Features"
+                            Text = "Getting Started",
+                            Position = IDEHeaderItemPositionTypes.Start,
+                            Items = new List<IDEHeaderItemState>()
+                            {
+                                new IDEHeaderItemState()
+                                {
+                                    Text = "Walkthrough of Studio Features"
+                                },
+                                new IDEHeaderItemState(),
+                                new IDEHeaderItemState()
+                                {
+                                    Text = "Coming Soon"
+                                }
+                            }
                         },
-                        new IDEHeaderItemState(),
                         new IDEHeaderItemState()
                         {
-                            Text = "Coming Soon"
+                            Text = "Documentation",
+                            Path = "https://www.fathym.com/docs"
+                        },
+                        new IDEHeaderItemState()
+                        {
+                            Text = "Hey",
+                            Path = "./there",
+                            Position = IDEHeaderItemPositionTypes.End
                         }
                     }
-                },
-                new IDEHeaderItemState()
-                {
-                    Text = "Documentation",
-                    Path = "https://www.fathym.com/docs"
-                },
-                new IDEHeaderItemState()
-                {
-                    Text = "Hey",
-                    Path = "./there",
-                    Position = IDEHeaderItemPositionTypes.End
                 }
             };
         }
-        #endregion
     }
+    #endregion
 }

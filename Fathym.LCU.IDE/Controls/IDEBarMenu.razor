@@ -1,0 +1,95 @@
+﻿@code {
+    public static IDictionary<string, string> BuildItemLinks(string root, string subRoot, List<IDEBarItemState> items)
+    {
+        var itemLinks = new Dictionary<string, string>();
+
+        items?.ForEach(item =>
+        {
+            if (!String.IsNullOrEmpty(item.Path))
+                itemLinks[item.Path] = CalculateAdjustedPath(root, subRoot, item.Path);
+
+            if (item.Items != null)
+            {
+                var subLinks = BuildItemLinks(root, subRoot, item.Items);
+
+                subLinks.ToList().ForEach(sl =>
+                {
+                    itemLinks[sl.Key] = sl.Value;
+                });
+            }
+        });
+
+        return itemLinks;
+    }
+
+    public static string CalculateAdjustedPath(string root, string subRoot, string path)
+    {
+        if (path.StartsWith("/"))
+            return $"./{root}{path}";
+        else if (path.StartsWith("./"))
+            return $"./{root}/{subRoot}{path.Replace("./", "/")}";
+        else
+            return path;
+    }
+
+    public static RenderFragment<(IDEBarItemState Item, IDictionary<string, string> ItemLinks)> CreateLinkOrText =
+        data => __builder =>
+        {
+            if (!String.IsNullOrEmpty(data.Item.Path))
+            {
+                var target = data.Item.Path.Contains("://") ? Target.Blank : Target.Default;
+
+                <BarLink To="@data.ItemLinks[data.Item.Path]" Target="@target">
+                    @if (!String.IsNullOrEmpty(data.Item.Icon))
+                    {
+                        <BarIcon IconName="@data.Item.Icon" />
+                    }
+
+                    @data.Item.Text
+                </BarLink>
+            }
+            else
+            {
+                @if (!String.IsNullOrEmpty(data.Item.Icon))
+                {
+                    <BarIcon IconName="@data.Item.Icon" />
+                }
+
+                @data.Item.Text
+            }
+        };
+
+    public static RenderFragment<(IDEBarItemState Item, IDictionary<string, string> ItemLinks)> CreateBarItem =
+        data => __builder =>
+        {
+            <BarItem>
+                @if (data.Item.Items != null)
+                {
+                    <BarDropdown>
+                        <BarDropdownToggle>@data.Item.Text</BarDropdownToggle>
+
+                        <BarDropdownMenu>
+                            @if (data.Item.Items != null)
+                            {
+                                foreach (var subItem in data.Item.Items)
+                                {
+                                    if (String.IsNullOrEmpty(subItem.Text) && String.IsNullOrEmpty(subItem.Path))
+                                    {
+                                        <BarDropdownDivider />
+                                    }
+                                    else
+                                    {
+                                        <BarDropdownItem>
+                                            @CreateLinkOrText((subItem, data.ItemLinks))
+                                        </BarDropdownItem>
+                                    }
+                                }
+                            }
+                        </BarDropdownMenu>
+                    </BarDropdown>
+                }
+                else
+                    @CreateLinkOrText((data.Item, data.ItemLinks))
+            </BarItem>
+        };
+}

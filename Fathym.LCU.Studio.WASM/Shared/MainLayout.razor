@@ -1,35 +1,43 @@
 ﻿@inherits MainLayoutBase
 
-<div>
-    <Layout Sider>
-        <LayoutSider>
-            <LayoutSiderContent>
-                <IDEActivityBar Title="Fathym Studio"></IDEActivityBar>
-            </LayoutSiderContent>
-        </LayoutSider>
-
-        <Layout>
-            @if (studioState.Header != null)
+@if (studioState != null)
+{
+    <div>
+        <Layout Sider>
+            @if (studioState.ActivityBar != null)
             {
-                <LayoutHeader Fixed>
-                    <IDEHeader Title="@studioState.Header.Title"
+                <LayoutSider>
+                    <LayoutSiderContent>
+                        <IDEActivityBar Title="@studioState.ActivityBar.Title"
+                                Icon="@studioState.ActivityBar.Icon"
+                                Items="studioState.ActivityBar.Items"></IDEActivityBar>
+                    </LayoutSiderContent>
+                </LayoutSider>
+            }
+
+            <Layout>
+                @if (studioState.Header != null)
+                {
+                    <LayoutHeader Fixed>
+                        <IDEHeader Title="@studioState.Header.Title"
                            PackagePath="@($"studio/{studioState.CurrentPackage}")"
                            PluginPath="@studioState.CurrentPlugin"
                            Items="studioState.Header.Items">
-                    </IDEHeader>
-                </LayoutHeader>
-            }
+                        </IDEHeader>
+                    </LayoutHeader>
+                }
 
-            <LayoutContent>
-                <Div Padding="Padding.Is2">
-                    @Body
-                </Div>
-            </LayoutContent>
+                <LayoutContent>
+                    <Div Padding="Padding.Is2">
+                        @Body
+                    </Div>
+                </LayoutContent>
 
-            <LayoutFooter>
-                <IDEStatusBar Status=""></IDEStatusBar>
-            </LayoutFooter>
+                <LayoutFooter>
+                    <IDEStatusBar Status=""></IDEStatusBar>
+                </LayoutFooter>
+            </Layout>
         </Layout>
-    </Layout>
-</div>
+    </div>
+}
 

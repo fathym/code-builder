@@ -16,6 +16,12 @@ namespace Fathym.LCU.IDE.Controls
     {
         #region Properties
         [Parameter]
+        public virtual string? Icon { get; set; }
+
+        [Parameter]
+        public virtual List<IDEBarItemState>? Items { get; set; }
+
+        [Parameter]
         public virtual string? Title { get; set; }
         #endregion
     }

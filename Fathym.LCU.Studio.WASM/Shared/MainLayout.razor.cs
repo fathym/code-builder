@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Components;
 using Blazorise;
 using BlazorPro.BlazorSize;
 using Fathym.LCU.IDE.Controls;
-using Fathym.LCU.Studio.WASM;
-using Fathym.LCU.Studio.WASM.Shared;
 using Fathym.LCU.UI.Controls;
 using Fathym.LCU.Utils;
 using Microsoft.AspNetCore.Components.Forms;
@@ -18,75 +16,33 @@ using Microsoft.AspNetCore.Components.WebAssembly.Http;
 using Microsoft.JSInterop;
 using System.Net.Http;
 using System.Net.Http.Json;
+using Fathym.LCU.Studio.WASM.State;
 
 namespace Fathym.LCU.Studio.WASM.Shared
 {
-    public class LCUStudioState
-    {
-        public virtual string? CurrentPackage { get; set; }
-
-        public virtual string? CurrentPlugin { get; set; }
-
-        public virtual LCUStudioHeaderState? Header { get; set; }
-    }
-
-    public class LCUStudioHeaderState
-    {
-        public virtual List<IDEHeaderItemState>? Items { get; set; }
-
-        public virtual string Title { get; set; }
-    }
-
     public class MainLayoutBase : LayoutComponentBase
     {
         #region Fields
         protected LCUStudioState studioState;
         #endregion
 
+        #region Properties
+        [CascadingParameter]
+        public virtual AppState AppState { get; set; }
+        #endregion
+
         #region Constructors
         public MainLayoutBase()
+        { }
+        #endregion
+
+        #region Life Cycle
+        protected override void OnParametersSet()
         {
-            studioState = new LCUStudioState()
-            {
-                CurrentPackage = "{selectedPackage}",
-                CurrentPlugin = "{selectedPlugin}",
-                Header = new LCUStudioHeaderState()
-                {
-                    Title = "MyStudio",
-                    Items = new List<IDEHeaderItemState>()
-                    {
-                        new IDEHeaderItemState()
-                        {
-                            Text = "Getting Started",
-                            Position = IDEHeaderItemPositionTypes.Start,
-                            Items = new List<IDEHeaderItemState>()
-                            {
-                                new IDEHeaderItemState()
-                                {
-                                    Text = "Walkthrough of Studio Features"
-                                },
-                                new IDEHeaderItemState(),
-                                new IDEHeaderItemState()
-                                {
-                                    Text = "Coming Soon"
-                                }
-                            }
-                        },
-                        new IDEHeaderItemState()
-                        {
-                            Text = "Documentation",
-                            Path = "https://www.fathym.com/docs"
-                        },
-                        new IDEHeaderItemState()
-                        {
-                            Text = "Hey",
-                            Path = "./there",
-                            Position = IDEHeaderItemPositionTypes.End
-                        }
-                    }
-                }
-            };
+            studioState = AppState?.Studio ?? new LCUStudioState();
+
+            base.OnParametersSet();
         }
+        #endregion
     }
-    #endregion
 }

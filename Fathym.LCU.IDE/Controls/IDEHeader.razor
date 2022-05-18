@@ -10,14 +10,14 @@
     <BarMenu>
         @if (Items != null)
         {
-            var itemLinks = buildItemLinks(Items);
+            var itemLinks = IDEBarMenu.BuildItemLinks(PackagePath, PluginPath, Items);
 
             <BarStart>
                 @foreach (var item in Items)
                 {
-                    if (item.Position == IDEHeaderItemPositionTypes.Start)
+                    if (item.Position == IDEBarItemPositionTypes.Start)
                     {
-                        @CreateBarItem((item, itemLinks))
+                        @IDEBarMenu.CreateBarItem((item, itemLinks))
                     }
                 }
             </BarStart>
@@ -25,69 +25,12 @@
             <BarEnd>
                 @foreach (var item in Items)
                 {
-                    if (item.Position == IDEHeaderItemPositionTypes.End)
+                    if (item.Position == IDEBarItemPositionTypes.End)
                     {
-                        @CreateBarItem((item, itemLinks))
+                        @IDEBarMenu.CreateBarItem((item, itemLinks))
                     }
                 }
             </BarEnd>
         }
     </BarMenu>
 </Bar>
-
-@code {
-    public static RenderFragment<(IDEHeaderItemState Item, IDictionary<string, string> ItemLinks)> CreateLinkOrText =
-        data => __builder =>
-        {
-            <div>
-                @if (!String.IsNullOrEmpty(data.Item.Path))
-                {
-                    var target = data.Item.Path.Contains("://") ? Target.Blank : Target.Top;
-
-                    <BarLink To="@data.ItemLinks[data.Item.Path]" Target="@target">
-                        @data.Item.Text
-                    </BarLink>
-                }
-                else
-                {
-                    @data.Item.Text
-                }
-            </div>
-        };
-
-    public static RenderFragment<(IDEHeaderItemState Item, IDictionary<string, string> ItemLinks)> CreateBarItem =
-        data => __builder =>
-        {
-            <BarItem>
-                @if (data.Item.Items != null)
-                {
-                    <BarDropdown>
-                        <BarDropdownToggle>@data.Item.Text</BarDropdownToggle>
-
-                        <BarDropdownMenu>
-                            @if (data.Item.Items != null)
-                            {
-                                foreach (var subItem in data.Item.Items)
-                                {
-                                    if (String.IsNullOrEmpty(subItem.Text) && String.IsNullOrEmpty(subItem.Path))
-                                    {
-                                        <BarDropdownDivider />
-                                    }
-                                    else
-                                    {
-                                        <BarDropdownItem>
-                                            @CreateLinkOrText((subItem, data.ItemLinks))
-                                        </BarDropdownItem>
-                                    }
-                                }
-                            }
-                        </BarDropdownMenu>
-                    </BarDropdown>
-                }
-                else
-                {
-                    @CreateLinkOrText((data.Item, data.ItemLinks))
-                }
-            </BarItem>
-        };
-}

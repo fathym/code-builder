@@ -10,7 +10,7 @@ namespace Fathym.LCU.CodeBuilder.WASM
         public virtual JsonObject? AppSettings { get; set; }
     }
 
-    public class AppBase : ComponentBase
+    public class AppBase : ComponentBase    
     {
         #region Inject
         [Inject]

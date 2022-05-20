@@ -1,3 +1,4 @@
+using Blazorise;
 using Microsoft.AspNetCore.Components;
 
 namespace Fathym.LCU.IDE.Controls
@@ -8,6 +9,9 @@ namespace Fathym.LCU.IDE.Controls
         #endregion
 
         #region Properties
+        [Parameter]
+        public virtual Bar? BarRef { get; set; }
+
         [Parameter]
         public virtual RenderFragment? ChildContent { get; set; }
 

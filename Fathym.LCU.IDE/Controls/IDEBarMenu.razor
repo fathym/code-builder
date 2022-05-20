@@ -5,7 +5,7 @@
 
         items?.ForEach(item =>
         {
-            if (!String.IsNullOrEmpty(item.Path))
+            if (!item.Path.IsNullOrEmpty())
                 itemLinks[item.Path] = CalculateAdjustedPath(root, subRoot, item.Path);
 
             if (item.Items != null)
@@ -25,9 +25,9 @@
     public static string CalculateAdjustedPath(string root, string subRoot, string path)
     {
         if (path.StartsWith("/"))
-            return $"./{root}{path}";
+            return $"{root}{path}";
         else if (path.StartsWith("./"))
-            return $"./{root}/{subRoot}{path.Replace("./", "/")}";
+            return $"{root}/{subRoot}{path.Replace("./", "/")}";
         else
             return path;
     }
@@ -35,12 +35,12 @@
     public static RenderFragment<(IDEBarItemState Item, IDictionary<string, string> ItemLinks)> CreateLinkOrText =
         data => __builder =>
         {
-            if (!String.IsNullOrEmpty(data.Item.Path))
+            if (!data.Item.Path.IsNullOrEmpty())
             {
                 var target = data.Item.Path.Contains("://") ? Target.Blank : Target.Default;
 
                 <BarLink To="@data.ItemLinks[data.Item.Path]" Target="@target">
-                    @if (!String.IsNullOrEmpty(data.Item.Icon))
+                    @if (!data.Item.Icon.IsNullOrEmpty())
                     {
                         <BarIcon IconName="@data.Item.Icon" />
                     }
@@ -50,7 +50,7 @@
             }
             else
             {
-                @if (!String.IsNullOrEmpty(data.Item.Icon))
+                @if (!data.Item.Icon.IsNullOrEmpty())
                 {
                     <BarIcon IconName="@data.Item.Icon" />
                 }
@@ -66,14 +66,21 @@
                 @if (data.Item.Items != null)
                 {
                     <BarDropdown>
-                        <BarDropdownToggle>@data.Item.Text</BarDropdownToggle>
+                        <BarDropdownToggle>
+                            @if (!data.Item.Icon.IsNullOrEmpty())
+                            {
+                                <BarIcon IconName="@data.Item.Icon" />
+                            }
+
+                            @data.Item.Text
+                        </BarDropdownToggle>
 
                         <BarDropdownMenu>
                             @if (data.Item.Items != null)
                             {
                                 foreach (var subItem in data.Item.Items)
                                 {
-                                    if (String.IsNullOrEmpty(subItem.Text) && String.IsNullOrEmpty(subItem.Path))
+                                    if (subItem.Text.IsNullOrEmpty() && subItem.Path.IsNullOrEmpty())
                                     {
                                         <BarDropdownDivider />
                                     }
@@ -90,6 +97,7 @@
                 }
                 else
                     @CreateLinkOrText((data.Item, data.ItemLinks))
-            </BarItem>
+
+                </BarItem>
         };
 }

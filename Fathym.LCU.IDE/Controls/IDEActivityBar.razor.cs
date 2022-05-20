@@ -21,6 +21,8 @@ namespace Fathym.LCU.IDE.Controls
         [Parameter]
         public virtual List<IDEBarItemState>? Items { get; set; }
 
+        public virtual Bar? Sidebar { get; set; }
+
         [Parameter]
         public virtual string? Title { get; set; }
         #endregion

@@ -12,6 +12,14 @@ html, body {
         height: 30px;
     }
 
+.z-index-200 {
+    z-index: 200;
+}
+
+.inline-flex {
+    flex-basis: 0;
+}
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;

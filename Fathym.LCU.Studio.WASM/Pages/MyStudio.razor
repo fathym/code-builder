@@ -1,18 +1,98 @@
-﻿@page "/mystudio"
+﻿@inherits MyStudioBase
+@page "/mystudio"
 
 <PageTitle>Fathym - MyStudio - Manage the way your studio works for you.</PageTitle>
 
-<h1>My Studio</h1>
+<Layout Height="Height.Is100">
+    <Layout Sider>
+        <LayoutSider>
+            <LayoutSiderContent>
+                <Bar Mode="BarMode.VerticalInline"
+                     CollapseMode="BarCollapseMode.Hide"
+                     Breakpoint="Breakpoint.Tablet"
+                     ThemeContrast="ThemeContrast.Dark"
+                     Background="Background.Primary"
+                     @ref="@sidebar">
+                     
+                    <BarToggler />
 
-<p role="status">Current count: @currentCount</p>
+                    <BarBrand>
+                        <BarItem Padding="Padding.Is2" Flex="Flex.Row.AlignItems.Start.JustifyContent.Center">
+                            @if (!backAction.IsNullOrEmpty())
+                            {
+                                <BarLink To="@backAction" Class="inline-flex">
+                                    <BarIcon IconName="@("fa-chevron-left")" />
+                                </BarLink>
+                            }
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+                            <BarLink To="/mystudio">
+                                <BarIcon IconName="@("fa-starship")" />
 
-@code {
-    private int currentCount = 0;
+                                <Text Padding="Padding.Is2.FromStart">Enterprise Projects</Text>
+                            </BarLink>
+                        </BarItem>
+                    </BarBrand>
 
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
-}
+                    <BarMenu>
+                        @if (items != null)
+                        {
+                            var itemLinks = IDEBarMenu.BuildItemLinks(String.Empty, String.Empty, items);
+
+                            <BarStart>
+                                @foreach (var item in items)
+                                {
+                                    if (item.Position == IDEBarItemPositionTypes.Start)
+                                    {
+                                        @IDEBarMenu.CreateBarItem((item, itemLinks))
+                                    }
+                                }
+                            </BarStart>
+
+                            <BarEnd>
+                                <Divider DividerType="DividerType.TextContent" Text="Library" />
+
+                                @foreach (var item in items)
+                                {
+                                    if (item.Position == IDEBarItemPositionTypes.End)
+                                    {
+                                        @IDEBarMenu.CreateBarItem((item, itemLinks))
+                                    }
+                                }
+                            </BarEnd>
+                        }
+                    </BarMenu>
+                </Bar>
+            </LayoutSiderContent>
+        </LayoutSider>
+
+        <Layout>
+            <LayoutHeader Fixed>
+                <Bar Mode="BarMode.Horizontal"
+                     Breakpoint="Breakpoint.Desktop"
+                     Background="Background.Light"
+                     ThemeContrast="ThemeContrast.Light">
+                    <BarToggler Bar="@sidebar" />
+
+                    <BarBrand>
+                        <BarItem>
+                            <BarLink To="#">
+                                <BarIcon IconName="IconName.Dashboard" />
+                                Example
+                            </BarLink>
+                        </BarItem>
+                    </BarBrand>
+
+                    <BarToggler />
+
+                    <BarMenu>
+                        <BarItem>Example</BarItem>
+                    </BarMenu>
+                </Bar>
+            </LayoutHeader>
+
+            <LayoutContent>
+                <h1>My Studio</h1>
+            </LayoutContent>
+        </Layout>
+    </Layout>
+</Layout>

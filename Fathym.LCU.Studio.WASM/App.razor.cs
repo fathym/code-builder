@@ -26,6 +26,28 @@ namespace Fathym.LCU.Studio.WASM
 
             theme = new Theme
             {
+                BackgroundOptions = new ThemeBackgroundOptions()
+                {
+                    Primary = "#4a918e",
+                    Secondary = "#b9dddd"
+                },
+                BarOptions = new ThemeBarOptions()
+                {
+                    DarkColors = new ThemeBarColorOptions()
+                    {
+                        DropdownColorOptions = new ThemeBarDropdownColorOptions()
+                        {
+                            BackgroundColor = "#3b6460"
+                        }
+                    },
+                    LightColors = new ThemeBarColorOptions()
+                    {
+                        DropdownColorOptions = new ThemeBarDropdownColorOptions()
+                        {
+                            BackgroundColor = "#8fc8c8"
+                        }
+                    }
+                },
                 ColorOptions = new ThemeColorOptions
                 {
                     Primary = "#4a918e",

@@ -8,7 +8,7 @@
             {
                 <LayoutSider>
                     <LayoutSiderContent>
-                        <IDEActivityBar Title="@studioState.ActivityBar.Title"
+                        <IDEActivityBar @ref="activityBar" Title="@studioState.ActivityBar.Title"
                                 Icon="@studioState.ActivityBar.Icon"
                                 Items="studioState.ActivityBar.Items"></IDEActivityBar>
                     </LayoutSiderContent>
@@ -18,17 +18,18 @@
             <Layout>
                 @if (studioState.Header != null)
                 {
-                    <LayoutHeader Fixed>
+                    <LayoutHeader Fixed Class="z-index-200">
                         <IDEHeader Title="@studioState.Header.Title"
                            PackagePath="@($"studio/{studioState.CurrentPackage}")"
                            PluginPath="@studioState.CurrentPlugin"
-                           Items="studioState.Header.Items">
+                           Items="studioState.Header.Items"
+                           BarRef="activityBar.Sidebar">
                         </IDEHeader>
                     </LayoutHeader>
                 }
 
                 <LayoutContent>
-                    <Div Padding="Padding.Is2">
+                    <Div Height="Height.Is100">
                         @Body
                     </Div>
                 </LayoutContent>

@@ -2,8 +2,9 @@
 
 <Bar Mode="BarMode.VerticalInline"
      CollapseMode="BarCollapseMode.Small"
-     Breakpoint="Breakpoint.FullHD"
-     ThemeContrast="ThemeContrast.Dark">
+     Breakpoint="Breakpoint.Tablet"
+     ThemeContrast="ThemeContrast.Dark"
+     @ref="Sidebar">
     <BarBrand>
         <BarItem Padding="Padding.Is2">
             <BarLink To="/">
@@ -25,14 +26,22 @@
 
             <BarStart>
                 @foreach (var item in Items)
+                {
                     if (item.Position == IDEBarItemPositionTypes.Start)
+                    {
                         @IDEBarMenu.CreateBarItem((item, itemLinks))
+                    }
+                }
             </BarStart>
 
             <BarEnd>
                 @foreach (var item in Items)
+                {
                     if (item.Position == IDEBarItemPositionTypes.End)
+                    {
                         @IDEBarMenu.CreateBarItem((item, itemLinks))
+                    }
+                }
             </BarEnd>
         }
     </BarMenu>

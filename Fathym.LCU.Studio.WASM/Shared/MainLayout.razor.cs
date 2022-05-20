@@ -23,6 +23,8 @@ namespace Fathym.LCU.Studio.WASM.Shared
     public class MainLayoutBase : LayoutComponentBase
     {
         #region Fields
+        protected IDEActivityBarBase activityBar;
+
         protected LCUStudioState studioState;
         #endregion
 

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Fathym" Version="3.1.22139.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.5" />
   </ItemGroup>
 

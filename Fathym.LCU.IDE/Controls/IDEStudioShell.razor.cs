@@ -12,8 +12,12 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace Fathym.LCU.IDE.Controls
 {
-    public class IDEActivityBarBase : ComponentBase
+    public class IDEStudioShellBase : ComponentBase
     {
+        #region Fields
+        protected IDEActivityBar activityBar;
+        #endregion
+
         #region Properties
         [Parameter]
         public virtual string? BackAction { get; set; }
@@ -22,15 +26,16 @@ namespace Fathym.LCU.IDE.Controls
         public virtual Background Background { get; set; }
 
         [Parameter]
-        public virtual BarCollapseMode CollapseMode { get; set; }
+        public virtual RenderFragment ChildContent { get; set; }
+
+        [Parameter]
+        public virtual bool CollapseModeHide { get; set; }
 
         [Parameter]
         public virtual string? Divider { get; set; }
 
         [Parameter]
         public virtual List<IDEBarItemState>? Items { get; set; }
-
-        public virtual Bar? Sidebar { get; set; }
 
         [Parameter]
         public virtual ThemeContrast ThemeContrast { get; set; }
@@ -49,11 +54,9 @@ namespace Fathym.LCU.IDE.Controls
         #endregion
 
         #region Constructors
-        public IDEActivityBarBase()
+        public IDEStudioShellBase()
         {
-            Background = Background.Default;
-
-            CollapseMode = BarCollapseMode.Small;
+            Background = Background.Primary;
 
             ThemeContrast = ThemeContrast.Dark;
 

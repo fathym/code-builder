@@ -109,32 +109,62 @@ namespace Fathym.LCU.Studio.WASM
                 ActivityBar = new LCUStudioActivityBarState()
                 {
                     Title = "Fathym Studio",
-                    Icon = "https://www.fathym.com/assets/images/logo.png",
+                    Icon = "fak fa-thinky",
                     Items = new List<IDEBarItemState>()
                     {
                         new IDEBarItemState()
                         {
-                            Text = "Plugin 1",
-                            Icon = "fa-phone",
-                            Path = "/studio/package-1/plugin-1"
+                            Text = "System",
+                            Icon = "fas fa-solar-system",
+                            Path = "/studio/package-1/plugin-1",
+                            Items = new List<IDEBarItemState>()
+                            {
+                                new IDEBarItemState()
+                                {
+                                    Text = "DFS",
+                                    Icon = "fas fa-file",
+                                    Path = "/studio/dfs"
+                                },
+                                new IDEBarItemState()
+                                {
+                                    Text = "CDN",
+                                    Icon = "fas fa-file-export",
+                                    Path = "/studio/text-grid/apis"
+                                }
+                            }
                         },
                         new IDEBarItemState()
                         {
-                            Text = "TextGrid",
-                            Icon = "fa-mobile-screen-button",
-                            Path = "/studio/text-grid/apis"
+                            Text = "Plugins",
+                            Icon = "fas fa-outlet",
+                            Path = "/studio/package-1/plugin-1",
+                            Items = new List<IDEBarItemState>()
+                            {
+                                new IDEBarItemState()
+                                {
+                                    Text = "Plugin 1",
+                                    Icon = "fas fa-plug",
+                                    Path = "/plugin/package-1/plugin-1"
+                                },
+                                new IDEBarItemState()
+                                {
+                                    Text = "TextGrid",
+                                    Icon = "fas fa-plug",
+                                    Path = "/plugin/text-grid/apis"
+                                }
+                            }
                         },
                         new IDEBarItemState()
                         {
                             Text = "MyStudio",
-                            Icon = "fa-paintbrush",
+                            Icon = "fas fa-paintbrush",
                             Path = "/mystudio",
                             Position = IDEBarItemPositionTypes.End
                         },
                         new IDEBarItemState()
                         {
                             Text = "Settings",
-                            Icon = "fa-gears",
+                            Icon = "fas fa-gears",
                             Path = "/settings",
                             Position = IDEBarItemPositionTypes.End
                         }

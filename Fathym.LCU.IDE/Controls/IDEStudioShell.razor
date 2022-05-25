@@ -1,0 +1,50 @@
+﻿@inherits IDEStudioShellBase
+
+<Layout Height="Height.Is100">
+    <Layout Sider>
+        <LayoutSider>
+            <LayoutSiderContent>
+                <IDEActivityBar @ref="activityBar"
+                                CollapseMode="@(CollapseModeHide ? BarCollapseMode.Hide : BarCollapseMode.Small)"
+                                ThemeContrast="@ThemeContrast"
+                                Background="Background"
+                                Title="@Title"
+                                TitleColor="@TitleColor"
+                                TitleIcon="@TitleIcon"
+                                TitleLink="@TitleLink"
+                                Divider="@Divider"
+                                Items="@Items"></IDEActivityBar>
+            </LayoutSiderContent>
+        </LayoutSider>
+
+        <Layout>
+            <LayoutHeader Fixed>
+                <Bar Mode="BarMode.Horizontal"
+                     Breakpoint="Breakpoint.Desktop"
+                     Background="Background.Light"
+                     ThemeContrast="ThemeContrast.Light">
+                    <BarToggler Bar="@activityBar.Sidebar" />
+
+                    <BarBrand>
+                        <BarItem>
+                            <BarLink To="#">
+                                <BarIcon IconName="IconName.Dashboard" />
+                                Example
+                            </BarLink>
+                        </BarItem>
+                    </BarBrand>
+
+                    <BarToggler />
+
+                    <BarMenu>
+                        <BarItem>Example</BarItem>
+                    </BarMenu>
+                </Bar>
+            </LayoutHeader>
+
+            <LayoutContent>
+                @ChildContent
+            </LayoutContent>
+        </Layout>
+    </Layout>
+</Layout>

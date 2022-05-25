@@ -17,6 +17,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Fathym.LCU.API\Fathym.LCU.API.csproj" />
+    <ProjectReference Include="..\Fathym.LCU.CodeCreator\Fathym.LCU.CodeCreator.csproj" />
+    <ProjectReference Include="..\Fathym.LCU.GrapesJS\Fathym.LCU.GrapesJS.csproj" />
     <ProjectReference Include="..\Fathym.LCU.UI\Fathym.LCU.UI.csproj" />
   </ItemGroup>
 

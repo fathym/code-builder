@@ -6,6 +6,9 @@ namespace Fathym.LCU.Studio.WASM.State
     {
         public virtual JsonObject? AppSettings { get; set; }
 
+        public virtual bool SmallDown { get; set; }
+
+
         public virtual LCUStudioState? Studio { get; set; }
     }
 }

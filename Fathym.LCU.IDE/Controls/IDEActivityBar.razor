@@ -1,20 +1,26 @@
 ﻿@inherits IDEActivityBarBase
 
 <Bar Mode="BarMode.VerticalInline"
-     CollapseMode="BarCollapseMode.Small"
+     CollapseMode="@CollapseMode"
      Breakpoint="Breakpoint.Tablet"
-     ThemeContrast="ThemeContrast.Dark"
+     ThemeContrast="@ThemeContrast"
+     Background="@Background"
      @ref="Sidebar">
-    <BarBrand>
-        <BarItem Padding="Padding.Is2">
-            <BarLink To="/">
-                <Image Class="logo short" Source="@Icon" Text="Fathym" />
 
-                <MediaQuery Media="@LCUBreakpoints.Up(992)">
-                    <Matched>
-                        <Text Padding="Padding.Is2.FromStart" TextColor="TextColor.Primary">@Title</Text>
-                    </Matched>
-                </MediaQuery>
+    <BarBrand>
+        <!-- Flex="Flex.Row.AlignItems.Start.JustifyContent.Center"-->
+        <BarItem Padding="Padding.Is2">
+            @if (!BackAction.IsNullOrEmpty())
+            {
+                <BarLink To="@BackAction" Class="inline-flex">
+                    <BarIcon IconName="@("fa-chevron-left")" />
+                </BarLink>
+            }
+
+            <BarLink To="@TitleLink">
+                <BarIcon IconName="@TitleIcon" />
+
+                <Text Padding="Padding.Is2.FromStart" TextColor="@TitleColor">@Title</Text>
             </BarLink>
         </BarItem>
     </BarBrand>
@@ -35,6 +41,18 @@
             </BarStart>
 
             <BarEnd>
+                @if (Divider != null)
+                {
+                    @if (Divider != String.Empty)
+                    {
+                        <Divider DividerType="DividerType.TextContent" Text="@Divider" />
+                    }
+                    else
+                    {
+                        <Divider DividerType="DividerType.Solid" />
+                    }
+                }
+
                 @foreach (var item in Items)
                 {
                     if (item.Position == IDEBarItemPositionTypes.End)

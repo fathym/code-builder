@@ -9,7 +9,8 @@
                 <LayoutSider>
                     <LayoutSiderContent>
                         <IDEActivityBar @ref="activityBar" Title="@studioState.ActivityBar.Title"
-                                Icon="@studioState.ActivityBar.Icon"
+                                CollapseMode="@(AppState.SmallDown ? BarCollapseMode.Hide : BarCollapseMode.Small)"
+                                TitleIcon="@studioState.ActivityBar.Icon"
                                 Items="studioState.ActivityBar.Items"></IDEActivityBar>
                     </LayoutSiderContent>
                 </LayoutSider>

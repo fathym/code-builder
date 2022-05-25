@@ -7,6 +7,7 @@ using Fathym.LCU.Studio.WASM;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Blazorise.Icons.FontAwesome;
+using Fathym.LCU.GrapesJS;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -17,6 +18,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddHttpClient();
 
 builder.Services.AddSingleton<ConfigUtilsJsInterop>();
+
+builder.Services.AddSingleton<FathymLCUGrapesInterop>();
 
 builder.Services.AddMediaQueryService();
 

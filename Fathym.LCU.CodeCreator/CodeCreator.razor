@@ -1,0 +1,30 @@
+﻿@inherits CodeCreatorBase
+
+<div class="code-creator">
+    <DropContainer TItem="DropItem" Items="@items" ItemsFilter="@((item, dropZone) => item.Group == dropZone)" ItemDropped="@ItemDropped" Flex="Flex.Wrap.Grow.Is1">
+        <ChildContent>
+            <DropZone TItem="DropItem" Name="Basket" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+                <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">Basket</Heading>
+            </DropZone>
+
+            <DropZone TItem="DropItem" Name="Fruit" DropAllowed="@((item) => item.Fruit)" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+                <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">Fruit</Heading>
+            </DropZone>
+
+            <DropZone TItem="DropItem" Name="Vegetable" DropAllowed="@((item) => !item.Fruit)" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+                <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">Vegetable</Heading>
+            </DropZone>
+        </ChildContent>
+
+        <ItemTemplate>
+            <Card Shadow="Shadow.Default" Margin="Margin.Is3.OnY">
+                <CardBody>
+                    <Image Source="@context.Image" Style="width:48px;height:48px;" />
+
+                    @context.Name
+                </CardBody>
+            </Card>
+        </ItemTemplate>
+    </DropContainer>
+</div>
+

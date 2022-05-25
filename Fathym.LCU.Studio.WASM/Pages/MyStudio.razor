@@ -8,13 +8,11 @@
         <LayoutSider>
             <LayoutSiderContent>
                 <Bar Mode="BarMode.VerticalInline"
-                     CollapseMode="BarCollapseMode.Hide"
+                     CollapseMode="@(AppState.SmallDown ? BarCollapseMode.Hide : BarCollapseMode.Small)"
                      Breakpoint="Breakpoint.Tablet"
                      ThemeContrast="ThemeContrast.Dark"
                      Background="Background.Primary"
                      @ref="@sidebar">
-                     
-                    <BarToggler />
 
                     <BarBrand>
                         <BarItem Padding="Padding.Is2" Flex="Flex.Row.AlignItems.Start.JustifyContent.Center">
@@ -91,7 +89,8 @@
             </LayoutHeader>
 
             <LayoutContent>
-                <h1>My Studio</h1>
+                <Grapes></Grapes>
+                @*<CodeCreator></CodeCreator>*@
             </LayoutContent>
         </Layout>
     </Layout>

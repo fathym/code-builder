@@ -2,6 +2,8 @@
 
 <Blazorise.ThemeProvider Theme="@theme">
     <MediaQueryList>
+        <MediaQuery Media="@LCUBreakpoints.Material.SmallDown" @bind-Matches="appState.SmallDown" />
+
         <CascadingValue Value="appState">
             <Router AppAssembly="@typeof(App).Assembly">
                 <Found Context="routeData">

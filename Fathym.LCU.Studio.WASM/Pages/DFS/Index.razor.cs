@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Blazorise;
 using BlazorPro.BlazorSize;
+using Fathym.LCU.CodeCreator;
+using Fathym.LCU.GrapesJS;
 using Fathym.LCU.IDE.Controls;
 using Fathym.LCU.Studio.WASM;
 using Fathym.LCU.Studio.WASM.Shared;
@@ -20,16 +22,14 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using Fathym.LCU.Studio.WASM.State;
 
-namespace Fathym.LCU.Studio.WASM.Pages
+namespace Fathym.LCU.Studio.WASM.Pages.DFS
 {
-    public class MyStudioBase : ComponentBase
+    public class IndexBase : ComponentBase
     {
         #region Fields
         protected List<IDEBarItemState> items;
 
         protected string backAction;
-
-        protected Bar sidebar;
         #endregion
 
         #region MyRegion
@@ -38,7 +38,7 @@ namespace Fathym.LCU.Studio.WASM.Pages
         #endregion
 
         #region Constructors
-        public MyStudioBase()
+        public IndexBase()
         {
 
         }
@@ -60,39 +60,31 @@ namespace Fathym.LCU.Studio.WASM.Pages
             {
                 new IDEBarItemState()
                 {
-                    Text = "Design Blocks",
-                    Icon = "fas fa-cube",
-                    Path = "/mystudio/design-blocks",
+                    Text = "Remote Files",
+                    Icon = "fa-cube",
                     Position = IDEBarItemPositionTypes.End,
                     Items = new List<IDEBarItemState>()
                     {
                         new IDEBarItemState()
                         {
-                            Text = "Action",
-                            Icon = "fas fa-link",
-                            Path = "/mystudio/design-blocks/action"
+                            Text = "Google Drive",
+                            Icon = "fa-brands fa-google-drive",
+                            Path = "/studio/dfs/remotes/google/drive"
                         },
                         new IDEBarItemState()
                         {
-                            Text = "Text",
-                            Icon = "fas fa-text",
-                            Path = "/mystudio/design-blocks/text"
+                            Text = "S3 Bucket",
+                            Icon = "fa-brands fa-aws",
+                            Path = "/studio/dfs/remotes/aws/s3"
                         }
                     }
                 },
                 new IDEBarItemState()
                 {
-                    Text = "Components",
-                    Icon = "fas fa-cubes",
-                    Path = "/mystudio/components",
-                    Position = IDEBarItemPositionTypes.End
-                },
-                new IDEBarItemState()
-                {
-                    Text = "Templates",
-                    Icon = "fas fa-cubes-stacked",
+                    Text = "Settings",
+                    Icon = "fa-gear",
                     //Icon = "fa-block-quote",
-                    Path = "/mystudio/templates",
+                    Path = "/studio/dfs/settings",
                     Position = IDEBarItemPositionTypes.End
                 }
             };

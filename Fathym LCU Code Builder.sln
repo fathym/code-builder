@@ -29,9 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fathym.LCU.IDE", "Fathym.LC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fathym.LCU.GrapesJS", "Fathym.LCU.GrapesJS\Fathym.LCU.GrapesJS.csproj", "{52926D60-EC52-4B05-9673-4C429347C0AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fathym.LCU.CodeCreator", "Fathym.LCU.CodeCreator\Fathym.LCU.CodeCreator.csproj", "{17FFE354-B25A-4634-88AE-351ECB7956C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fathym.LCU.CodeCreator", "Fathym.LCU.CodeCreator\Fathym.LCU.CodeCreator.csproj", "{17FFE354-B25A-4634-88AE-351ECB7956C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fathym.LCU.UI.DragonDrop", "Fathym.LCU.UI.DragonDrop\Fathym.LCU.UI.DragonDrop.csproj", "{2063AF88-4F22-4A91-9456-5838C40B7642}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fathym.LCU.UI.DragonDrop", "Fathym.LCU.UI.DragonDrop\Fathym.LCU.UI.DragonDrop.csproj", "{2063AF88-4F22-4A91-9456-5838C40B7642}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.Example.WASM", "Customer.Example.WASM\Customer.Example.WASM.csproj", "{F4CD6000-5B2A-4AE6-BF60-D3F525941D3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{2063AF88-4F22-4A91-9456-5838C40B7642}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2063AF88-4F22-4A91-9456-5838C40B7642}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2063AF88-4F22-4A91-9456-5838C40B7642}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4CD6000-5B2A-4AE6-BF60-D3F525941D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4CD6000-5B2A-4AE6-BF60-D3F525941D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4CD6000-5B2A-4AE6-BF60-D3F525941D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4CD6000-5B2A-4AE6-BF60-D3F525941D3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{52926D60-EC52-4B05-9673-4C429347C0AD} = {A4C75AB3-0C36-469E-99DC-96A15C645AF5}
 		{17FFE354-B25A-4634-88AE-351ECB7956C9} = {A4C75AB3-0C36-469E-99DC-96A15C645AF5}
 		{2063AF88-4F22-4A91-9456-5838C40B7642} = {A4C75AB3-0C36-469E-99DC-96A15C645AF5}
+		{F4CD6000-5B2A-4AE6-BF60-D3F525941D3A} = {EA00C147-F228-4E87-9BD4-AE62452B9261}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F64C885B-A6C7-49BF-ADB3-7615E4E0C5E7}

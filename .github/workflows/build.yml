@@ -16,11 +16,8 @@ env:
 jobs:
   build:
     name: Build and Publish
-    runs-on: ubuntu-latest
-    environment: integration  
-    pool:
-      name: 'Azure Pipelines'
-      vmImage: windows-2022    
+    runs-on: windows-latest
+    environment: integration   
     steps:
     # checkout repository
     - uses: actions/checkout@v2

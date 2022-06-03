@@ -1,0 +1,52 @@
+name: Build Prerelease
+
+on:
+  push:
+    branches:
+    - 'integration'
+    - 'feature/**'
+    - 'main'
+    
+env:
+  project_file: 'Fathym LCU Code Builder.sln'
+  nuget_feed_name: 'LCU'
+  nuget_feed_source: 'https://pkgs.dev.azure.com/fathym/_packaging/LCU/nuget/v3/index.json'
+  nuget_config: 'nuget.config'
+
+jobs:
+  build:
+    name: Build and Publish
+    runs-on: windows-latest
+    environment: integration   
+    steps:
+    # checkout repository
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+
+    # set branch name variable
+    - name: Set branch name variable
+      id: vars
+      run: echo ::set-output name=branchName::${GITHUB_REF##*/}
+      
+    - name: Echo current branch
+      run: echo "The current branch is ${{ steps.vars.outputs.branchName }}"            
+        
+    # restore and build dotnet     
+    - name: Setup .NET Core SDK 6.0.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x              
+        
+    - name: Auth NuGet Remove
+      run: nuget sources remove -Name ${{ env.nuget_feed_name }}
+        
+    - name: Auth NuGet Add
+      run: nuget sources add -Name ${{ env.nuget_feed_name }} -Source ${{ env.nuget_feed_source }} -username ${{ secrets.AZDEVOPS_USER }} -password ${{ secrets.AZDEVOPS_PAT }}
+     
+    - name: Restore NuGet Packages
+      run: nuget restore "${{ env.project_file }}"
+
+    - name: 'Resolve Project Dependencies Using Dotnet'
+      shell: pwsh
+      run: dotnet build --configuration Release --output ./output        

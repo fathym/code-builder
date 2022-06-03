@@ -74,10 +74,6 @@ namespace Fathym.LCU.Enterprise.StateAPI
                     isRunning = false;
             }));
 
-            var statusChecking = ;
-
-            tasks.Add(await statusChecking());
-
             await Task.WhenAll(tasks);
 
             await parallelRun(async () =>

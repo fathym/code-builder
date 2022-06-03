@@ -59,7 +59,7 @@ jobs:
       run: nuget sources add -Name ${{ env.nuget_feed_name }} -Source ${{ env.nuget_feed_source }} -username ${{ secrets.AZDEVOPS_USER }} -password ${{ secrets.AZDEVOPS_PAT }}
      
     - name: Restore NuGet Packages
-      run: nuget restore ${{ env.project_file }}        
+      run: nuget restore "${{ env.project_file }}"
 
     - name: 'Resolve Project Dependencies Using Dotnet'
       shell: pwsh

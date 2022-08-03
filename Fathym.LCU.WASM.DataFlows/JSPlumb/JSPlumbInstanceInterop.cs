@@ -22,11 +22,12 @@ namespace Fathym.LCU.WASM.DataFlows.JSPlumb
         {
             instanceTask = new(async () =>
             {
-                var instance = await jsPlumbInterop.Create(container, defaults);
+                await jsPlumbInterop.Alert("hey");
+                //var instance = await jsPlumbInterop.Create(container, defaults);
 
-                await jsPlumbInterop.RegisterHandlers(this, instance);
+                //await jsPlumbInterop.RegisterHandlers(this, instance);
 
-                return instance;
+                return null;// instance;
             });
         }
         #endregion

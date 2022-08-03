@@ -30,6 +30,13 @@ namespace Fathym.LCU.WASM.DataFlows.JSPlumb
         #endregion
 
         #region API Methods
+        public virtual async ValueTask<IJSObjectReference> Alert(string message)
+        {
+            var module = await moduleTask.Value;
+
+            return await module.InvokeAsync<IJSObjectReference>("Alert", message);
+        }
+
         public virtual async ValueTask<IJSObjectReference> Create(ElementReference container, MetadataModel defaults)
         {
             var module = await moduleTask.Value;

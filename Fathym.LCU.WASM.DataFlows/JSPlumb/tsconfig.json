@@ -2,7 +2,16 @@
   "compilerOptions": {
     "sourceMap": true,
     "moduleResolution": "node",
-    "module": "ES2020",
+    "outDir": "../wwwroot",
+    "module": "ESNext",
     "target": "ES6",
+    "declaration": true,
+    "noEmitOnError": true,
+    "strict": true,
+    "esModuleInterop": false,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }

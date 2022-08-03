@@ -7,12 +7,12 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        // use: {
-        //   loader: 'ts-loader'
-        // },
         use: {
-          loader: 'babel-loader'
+          loader: 'ts-loader'
         },
+        // use: {
+        //   loader: 'babel-loader'
+        // },
       },
     ],
   },

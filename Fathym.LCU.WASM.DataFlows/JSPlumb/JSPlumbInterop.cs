@@ -41,7 +41,7 @@ namespace Fathym.LCU.WASM.DataFlows.JSPlumb
         {
             var module = await moduleTask.Value;
 
-            await module.InvokeVoidAsync("registerHandlers", DotNetObjectReference.Create(instanceInterop), instance);
+            await module.InvokeVoidAsync("JSPlumbInterop.RegisterHandlers", DotNetObjectReference.Create(instanceInterop), instance);
         }
         #endregion
     }

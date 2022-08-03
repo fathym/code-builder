@@ -16,6 +16,10 @@ namespace Fathym.LCU.WASM.DataFlows
         protected JSPlumbInterop jsPlumbInterop { get; set; }
         #endregion
 
+        #region Fields
+        protected JSPlumbInstanceInterop jsPlumbInstance;
+        #endregion
+
         #region Properties
         [Parameter]
         public virtual DataFlow DataFlow { get; set; }
@@ -35,13 +39,18 @@ namespace Fathym.LCU.WASM.DataFlows
         #endregion
 
         #region Life Cycle
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+            jsPlumbInstance = new JSPlumbInstanceInterop(jsPlumbInterop, DataFlowCanvas, new MetadataModel());
+
+        }
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            var instance = new JSPlumbInstanceInterop(jsPlumbInterop, DataFlowCanvas, new MetadataModel());
-
-            await instance.Connect(El1, El2);
-
             await base.OnAfterRenderAsync(firstRender);
+
+            await jsPlumbInstance.Connect(El1, El2);
         }
         #endregion
 

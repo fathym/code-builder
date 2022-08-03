@@ -27,7 +27,7 @@ export class JSPlumbInterop {
   }
 
   public static RegisterHandlers(
-    dotNetHelper,
+    dotNetHelper: any,
     instance: BrowserJsPlumbInstance
   ): void {
     instance.bind(INTERCEPT_BEFORE_DROP, (params: BeforeDropParams) => {

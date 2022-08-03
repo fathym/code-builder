@@ -1,7 +1,6 @@
-import { newInstance } from '@jsplumb/browser-ui';
-import { INTERCEPT_BEFORE_DROP, EVENT_CONNECTION } from '@jsplumb/core';
-
-class JSPlumbInterop {
+import { newInstance, } from '@jsplumb/browser-ui';
+import { EVENT_CONNECTION, INTERCEPT_BEFORE_DROP, } from '@jsplumb/core';
+export class JSPlumbInterop {
     static Alert(message) {
         alert(message);
     }
@@ -17,5 +16,4 @@ class JSPlumbInterop {
         });
     }
 }
-
-export { JSPlumbInterop };
+//# sourceMappingURL=JSPlumbInterop.js.map

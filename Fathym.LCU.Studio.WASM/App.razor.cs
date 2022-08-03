@@ -3,6 +3,8 @@ using Fathym.LCU.IDE.Controls;
 using Fathym.LCU.Studio.WASM.State;
 using Fathym.LCU.Utils;
 using Microsoft.AspNetCore.Components;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Fathym.LCU.Studio.WASM
 {
@@ -84,12 +86,13 @@ namespace Fathym.LCU.Studio.WASM
                             {
                                 new IDEBarItemState()
                                 {
-                                    Text = "Walkthrough of Studio Features"
+                                    Text = "Create First Website",
+                                    Path = "/mystudio#create-first-website"
                                 },
                                 new IDEBarItemState(),
                                 new IDEBarItemState()
                                 {
-                                    Text = "Coming Soon"
+                                    Text = "More Coming Soon"
                                 }
                             }
                         },
@@ -112,48 +115,47 @@ namespace Fathym.LCU.Studio.WASM
                     Icon = "fak fa-thinky",
                     Items = new List<IDEBarItemState>()
                     {
-                        new IDEBarItemState()
-                        {
-                            Text = "System",
-                            Icon = "fas fa-solar-system",
-                            Path = "/studio/package-1/plugin-1",
-                            Items = new List<IDEBarItemState>()
-                            {
-                                new IDEBarItemState()
-                                {
-                                    Text = "DFS",
-                                    Icon = "fas fa-file",
-                                    Path = "/studio/dfs"
-                                },
-                                new IDEBarItemState()
-                                {
-                                    Text = "CDN",
-                                    Icon = "fas fa-file-export",
-                                    Path = "/studio/text-grid/apis"
-                                }
-                            }
-                        },
-                        new IDEBarItemState()
-                        {
-                            Text = "Plugins",
-                            Icon = "fas fa-outlet",
-                            Path = "/studio/package-1/plugin-1",
-                            Items = new List<IDEBarItemState>()
-                            {
-                                new IDEBarItemState()
-                                {
-                                    Text = "Plugin 1",
-                                    Icon = "fas fa-plug",
-                                    Path = "/plugin/package-1/plugin-1"
-                                },
-                                new IDEBarItemState()
-                                {
-                                    Text = "TextGrid",
-                                    Icon = "fas fa-plug",
-                                    Path = "/plugin/text-grid/apis"
-                                }
-                            }
-                        },
+                        //new IDEBarItemState()
+                        //{
+                        //    Text = "Enterprise",
+                        //    Icon = "fas fa-solar-system",
+                        //    Items = new List<IDEBarItemState>()
+                        //    {
+                        //        new IDEBarItemState()
+                        //        {
+                        //            Text = "DFS",
+                        //            Icon = "fas fa-file",
+                        //            Path = "/enterprise/dfs"
+                        //        }
+                        //        //new IDEBarItemState()
+                        //        //{
+                        //        //    Text = "CDN",
+                        //        //    Icon = "fas fa-file-export",
+                        //        //    Path = "/studio/text-grid/apis"
+                        //        //}
+                        //    }
+                        //},
+                        //new IDEBarItemState()
+                        //{
+                        //    Text = "Plugins",
+                        //    Icon = "fas fa-outlet",
+                        //    Path = "/studio/package-1/plugin-1",
+                        //    Items = new List<IDEBarItemState>()
+                        //    {
+                        //        new IDEBarItemState()
+                        //        {
+                        //            Text = "Plugin 1",
+                        //            Icon = "fas fa-plug",
+                        //            Path = "/plugin/package-1/plugin-1"
+                        //        },
+                        //        new IDEBarItemState()
+                        //        {
+                        //            Text = "TextGrid",
+                        //            Icon = "fas fa-plug",
+                        //            Path = "/plugin/text-grid/apis"
+                        //        }
+                        //    }
+                        //},
                         new IDEBarItemState()
                         {
                             Text = "MyStudio",

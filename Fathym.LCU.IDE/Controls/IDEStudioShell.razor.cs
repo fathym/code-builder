@@ -20,6 +20,18 @@ namespace Fathym.LCU.IDE.Controls
 
         #region Properties
         [Parameter]
+        public virtual string? ActivityTitle { get; set; }
+
+        [Parameter]
+        public virtual TextColor ActivityTitleColor { get; set; }
+
+        [Parameter]
+        public virtual string? ActivityTitleIcon { get; set; }
+
+        [Parameter]
+        public virtual string? ActivityTitleLink { get; set; }
+
+        [Parameter]
         public virtual string? BackAction { get; set; }
 
         [Parameter]
@@ -56,6 +68,8 @@ namespace Fathym.LCU.IDE.Controls
         #region Constructors
         public IDEStudioShellBase()
         {
+            ActivityTitleColor = TextColor.Default;
+
             Background = Background.Primary;
 
             ThemeContrast = ThemeContrast.Dark;

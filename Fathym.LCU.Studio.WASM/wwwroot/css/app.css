@@ -4,6 +4,10 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.b-layout-sider-content {
+    overflow: hidden;
+}
+
 .logo {
     height: 100%;
 }

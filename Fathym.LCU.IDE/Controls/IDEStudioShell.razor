@@ -8,10 +8,10 @@
                                 CollapseMode="@(CollapseModeHide ? BarCollapseMode.Hide : BarCollapseMode.Small)"
                                 ThemeContrast="@ThemeContrast"
                                 Background="Background"
-                                Title="@Title"
-                                TitleColor="@TitleColor"
-                                TitleIcon="@TitleIcon"
-                                TitleLink="@TitleLink"
+                                Title="@ActivityTitle"
+                                TitleColor="@ActivityTitleColor"
+                                TitleIcon="@ActivityTitleIcon"
+                                TitleLink="@ActivityTitleLink"
                                 Divider="@Divider"
                                 Items="@Items"></IDEActivityBar>
             </LayoutSiderContent>
@@ -27,18 +27,19 @@
 
                     <BarBrand>
                         <BarItem>
-                            <BarLink To="#">
-                                <BarIcon IconName="IconName.Dashboard" />
-                                Example
+                            <BarLink To="@TitleLink">
+                                <i class="@TitleIcon b-bar-icon"></i>
+
+                                <Text Padding="Padding.Is2.FromStart" TextColor="@TitleColor">@Title</Text>
                             </BarLink>
                         </BarItem>
                     </BarBrand>
 
-                    <BarToggler />
+                    @*<BarToggler />
 
                     <BarMenu>
                         <BarItem>Example</BarItem>
-                    </BarMenu>
+                    </BarMenu>*@
                 </Bar>
             </LayoutHeader>
 

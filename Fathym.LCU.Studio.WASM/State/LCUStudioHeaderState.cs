@@ -1,4 +1,5 @@
 ﻿using Fathym.LCU.IDE.Controls;
+using System.Collections.Generic;
 
 namespace Fathym.LCU.Studio.WASM.State
 {

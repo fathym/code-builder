@@ -18,11 +18,11 @@ namespace Fathym.LCU.WASM.DataFlows.JSPlumb
         #endregion
 
         #region Constructors
-        public JSPlumbInstanceInterop(JSPlumbInterop jsPlumbInterop, ElementReference container, MetadataModel defaults)
+        public JSPlumbInstanceInterop(JSPlumbInterop jsPlumbInterop, Lazy<ElementReference> container, MetadataModel defaults)
         {
             instanceTask = new(async () =>
             {
-                var instance = await jsPlumbInterop.Create(container, defaults);
+                var instance = await jsPlumbInterop.Create(container.Value, defaults);
 
                 await jsPlumbInterop.RegisterHandlers(this, instance);
 

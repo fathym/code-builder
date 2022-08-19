@@ -1,4 +1,7 @@
 import typescript from 'rollup-plugin-typescript2';
+import resolve from 'rollup-plugin-node-resolve';
+import commonJS from 'rollup-plugin-commonjs'
+
 import pkg from './package.json';
 
 const input = 'src/index.ts';
@@ -21,5 +24,9 @@ export default {
       ...typescriptPluginArgs,
       tsconfig: './tsconfig.json',
     }),
+    resolve(),
+    commonJS({
+      include: 'node_modules/**'
+    })
   ],
 };
